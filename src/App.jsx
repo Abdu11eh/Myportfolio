@@ -146,13 +146,13 @@ export default function App() {
           </div>
 
           <div className="hero-avatar-box">
-            <div className="avatar-glow">
-              <img 
-                src="public/abdpic.jpg" 
-                alt="Muhammad Abdullah Shakeel" 
-              />
-            </div>
-          </div>
+  <div className="avatar-glow">
+    <img 
+      src="/abdpic.jpg" 
+      alt="Muhammad Abdullah Shakeel" 
+    />
+  </div>
+</div>
         </section>
 
         {/* SKILLS SECTION */}
