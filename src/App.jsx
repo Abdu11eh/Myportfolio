@@ -1,5 +1,7 @@
+import { Analytics } from "@vercel/analytics/next"
 import React, { useState } from 'react';
 import './App.css';
+
 
 
 const SKILLS_DATA = [
