@@ -1,3 +1,15 @@
+# Portfolio Website 🌐
+
+My personal portfolio website showcasing web application projects, technical capabilities, and frontend development experience.
+
+### Features
+* **Project Showcase:** Highlights interactive projects with live demo links and GitHub repository access.
+* **About & Experience:** Brief overview of technical background, leadership roles, and community involvement.
+* **Contact Integration:** Easy-to-use pathways to connect professional networks.
+
+### Tech Stack
+* **Frontend:** React, JavaScript, HTML, CSS
+* **Deployment:** Vercel
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
