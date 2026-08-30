@@ -211,7 +211,7 @@ body {
 .circle-frame {
   width: 380px;
   height: 380px;
-  border-radius: 50%;
+  /* border-radius: 50%; */
   background-color: #1a1a1a;
   overflow: hidden;
   border: 1px solid var(--border-color);
