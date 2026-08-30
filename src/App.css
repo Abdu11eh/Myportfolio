@@ -83,6 +83,13 @@ body {
   gap: 3rem;
 }
 
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
 .greeting-text {
   color: var(--text-muted);
   font-size: 1.1rem;
@@ -106,6 +113,7 @@ body {
 /* SOCIAL ICONS */
 .social-icons {
   display: flex;
+  justify-content: center;
   gap: 1rem;
   margin-bottom: 2rem;
 }
@@ -129,7 +137,13 @@ body {
 }
 
 /* BUTTONS */
-/* Update button styles to ensure equal size and height */
+.hero-btn-group {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
 .btn-orange,
 .btn-outline {
   display: inline-flex;
@@ -166,17 +180,10 @@ body {
   color: var(--orange-accent);
 }
 
-/* Fix Hero Left column alignment */
-.hero-left {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-/* Ensure stats box aligns flush with the left container edge */
+/* STATS CARD */
 .stats-box {
   background-color: var(--card-bg);
-  padding: 1.5rem 2.5rem;
+  padding: 1.25rem 2rem;
   border-radius: 12px;
   display: inline-flex;
   align-items: center;
@@ -190,21 +197,6 @@ body {
   flex-direction: column;
   align-items: center;
   text-align: center;
-}
-/* STATS CARD */
-.stats-box {
-  background-color: var(--card-bg);
-  padding: 1.25rem 2rem;
-  border-radius: 10px;
-  display: inline-flex;
-  align-items: center;
-  gap: 2rem;
-  border: 1px solid var(--border-color);
-}
-
-.stat-item {
-  display: flex;
-  flex-direction: column;
 }
 
 .stat-number {
@@ -233,7 +225,6 @@ body {
 .circle-frame {
   width: 480px;
   height: 480px;
-  /* border-radius: 50%; */
   background-color: #1a1a1a;
   overflow: hidden;
   border: 1px solid var(--border-color);
@@ -246,7 +237,6 @@ body {
   filter: grayscale(100%);
   transition: filter 0.8s ease-in-out;
 }
-
 
 .circle-frame img:hover {
   filter: grayscale(0%);
@@ -442,16 +432,27 @@ body {
 }
 
 /* CONTACT SECTION */
+.contact-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
 .contact-subtitle {
   color: var(--text-muted);
   max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
   margin-bottom: 2rem;
+  text-align: center;
 }
 
 .contact-links-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 1.2rem;
+  width: 100%;
   margin-bottom: 4rem;
 }
 
@@ -464,6 +465,7 @@ body {
   color: var(--text-main);
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 1rem;
   transition: border-color 0.2s ease;
 }
@@ -477,6 +479,7 @@ body {
 }
 
 .footer-copyright {
+  width: 100%;
   text-align: center;
   color: var(--text-muted);
   font-size: 0.85rem;
@@ -520,10 +523,6 @@ body {
 
   .role-title {
     font-size: 2.8rem;
-  }
-
-  .social-icons, .hero-btn-group {
-    justify-content: center;
   }
 
   .circle-frame {
