@@ -209,8 +209,8 @@ body {
 }
 
 .circle-frame {
-  width: 580px;
-  height: 580px;
+  width: 480px;
+  height: 480px;
   /* border-radius: 50%; */
   background-color: #1a1a1a;
   overflow: hidden;
@@ -222,7 +222,7 @@ body {
   height: 100%;
   object-fit: cover;
   filter: grayscale(100%);
-  transition: filter 0.10s ease;
+  transition: filter 0.2s ease;
 }
 
 .circle-frame img:hover {
