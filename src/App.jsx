@@ -74,7 +74,7 @@ const LEADERSHIP_DATA = [
     tag: "Student Leadership"
   },
   {
-    role: "Conference Volunteer",
+    role: "Conference Volunteer And 30+ other Events",
     organization: "SPELT International Conference",
     description: "Assisted event logistics and provided support for international academic delegates across two annual conferences.",
     tag: "Volunteering"
@@ -92,7 +92,7 @@ export default function App() {
       <nav className="navbar">
         <div className="nav-container">
           <a href="#hero" className="nav-logo">
-            <span className="logo-accent">PORTFOLIO</span>
+            <span className="logo-accent">Abdu11eh</span>
           </a>
 
           {/* Desktop Links */}
@@ -135,8 +135,8 @@ export default function App() {
         <section id="hero" className="hero-section">
           <div className="hero-left">
             <p className="greeting-text">Hi I am</p>
-            <p className="user-name">Muhammad Abdullah</p>
-            <h1 className="role-title">Frontend Developer</h1>
+            <p className="user-name">Abdullah Shakeel</p>
+            <h1 className="role-title">Frontend Developer And Computer Science Student At DSU</h1>
 
             {/* Social Icons */}
             <div className="social-icons">
@@ -156,10 +156,6 @@ export default function App() {
 
             {/* Metric / Experience Cards */}
             <div className="stats-box">
-              <div className="stat-item">
-                <span className="stat-number">2+</span>
-                <span className="stat-label">Projects</span>
-              </div>
               <div className="stat-divider" />
               <div className="stat-item">
                 <span className="stat-number">10+</span>
