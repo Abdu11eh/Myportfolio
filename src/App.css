@@ -129,17 +129,26 @@ body {
 }
 
 /* BUTTONS */
-.btn-orange {
-  background-color: var(--orange-accent);
-  color: #fff;
-  padding: 0.75rem 1.75rem;
-  border-radius: 6px;
+/* Update button styles to ensure equal size and height */
+.btn-orange,
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 0 2rem;
+  border-radius: 8px;
   text-decoration: none;
   font-weight: 600;
   font-size: 0.95rem;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+}
+
+.btn-orange {
+  background-color: var(--orange-accent);
+  color: #fff;
   border: none;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
 }
 
 .btn-orange:hover {
@@ -149,13 +158,7 @@ body {
 .btn-outline {
   background-color: transparent;
   color: var(--text-main);
-  padding: 0.75rem 1.75rem;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 0.95rem;
   border: 1px solid var(--border-color);
-  transition: border-color 0.2s ease, color 0.2s ease;
 }
 
 .btn-outline:hover {
@@ -163,12 +166,31 @@ body {
   color: var(--orange-accent);
 }
 
-.hero-btn-group {
+/* Fix Hero Left column alignment */
+.hero-left {
   display: flex;
-  gap: 1rem;
-  margin-bottom: 3.5rem;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
+/* Ensure stats box aligns flush with the left container edge */
+.stats-box {
+  background-color: var(--card-bg);
+  padding: 1.5rem 2.5rem;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 2rem;
+  border: 1px solid var(--border-color);
+  margin-top: 1rem;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
 /* STATS CARD */
 .stats-box {
   background-color: var(--card-bg);
@@ -222,8 +244,9 @@ body {
   height: 100%;
   object-fit: cover;
   filter: grayscale(100%);
-  transition: filter 0.2s ease;
+  transition: filter 0.8s ease-in-out;
 }
+
 
 .circle-frame img:hover {
   filter: grayscale(0%);
