@@ -1,6 +1,14 @@
 import { Analytics } from "@vercel/analytics/react";
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
+const NAV_ITEMS = [
+  { id: 'hero', label: 'Home' },
+  { id: 'skills', label: 'Skills' },
+  { id: 'projects', label: 'Projects' },
+  { id: 'journey', label: 'Journey' },
+  { id: 'leadership', label: 'Leadership' },
+  { id: 'contact', label: 'Contact me' },
+];
 
 const SKILLS_DATA = [
   {
@@ -83,6 +91,56 @@ const LEADERSHIP_DATA = [
 
 export default function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('hero');
+  const [pillStyle, setPillStyle] = useState({ left: 0, width: 0, opacity: 0 });
+
+  // IntersectionObserver to set active state automatically on scroll
+  useEffect(() => {
+    const sectionIds = NAV_ITEMS.map((item) => item.id);
+    const sections = sectionIds
+      .map((id) => document.getElementById(id))
+      .filter(Boolean);
+
+    const observerOptions = {
+      root: null,
+      rootMargin: '-30% 0px -60% 0px',
+      threshold: 0
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach((sec) => observer.observe(sec));
+
+    return () => {
+      sections.forEach((sec) => observer.unobserve(sec));
+    };
+  }, []);
+
+  // Handle smooth sliding hover pill on desktop
+  const handleMouseEnter = (e) => {
+    const target = e.currentTarget;
+    const navLinks = target.closest('.nav-links');
+    if (!navLinks) return;
+
+    const navRect = navLinks.getBoundingClientRect();
+    const targetRect = target.getBoundingClientRect();
+
+    setPillStyle({
+      left: targetRect.left - navRect.left,
+      width: targetRect.width,
+      opacity: 1
+    });
+  };
+
+  const handleMouseLeave = () => {
+    setPillStyle((prev) => ({ ...prev, opacity: 0 }));
+  };
 
   return (
     <div className="portfolio-container">
@@ -96,14 +154,34 @@ export default function App() {
           </a>
 
           {/* Desktop Links */}
-          <ul className="nav-links">
-            <li><a href="#hero" className="active">Home</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#journey">Journey</a></li>
-            <li><a href="#leadership">Leadership</a></li>
-            <li><a href="#contact">Contact me</a></li>
-          </ul>
+          <div className="nav-links-wrapper" onMouseLeave={handleMouseLeave}>
+            {/* Sliding Hover Pill */}
+            <div 
+              className="nav-hover-pill" 
+              style={{
+                left: `${pillStyle.left}px`,
+                width: `${pillStyle.width}px`,
+                opacity: pillStyle.opacity
+              }}
+            />
+
+            <ul className="nav-links">
+              {NAV_ITEMS.map((item) => {
+                const isActive = activeSection === item.id;
+                return (
+                  <li key={item.id} onMouseEnter={handleMouseEnter}>
+                    <a 
+                      href={`#${item.id}`} 
+                      className={`nav-item-link ${isActive ? 'active' : ''}`}
+                      onClick={() => setActiveSection(item.id)}
+                    >
+                      {item.label}
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
 
           <a href="#contact" className="btn-orange nav-cta">Hire Me</a>
 
@@ -118,16 +196,24 @@ export default function App() {
         </div>
 
         {/* Mobile Dropdown */}
-        {isMobileMenuOpen && (
+        <div className={`mobile-dropdown-wrapper ${isMobileMenuOpen ? 'open' : ''}`}>
           <ul className="mobile-dropdown">
-            <li><a href="#hero" onClick={() => setIsMobileMenuOpen(false)}>Home</a></li>
-            <li><a href="#skills" onClick={() => setIsMobileMenuOpen(false)}>Skills</a></li>
-            <li><a href="#projects" onClick={() => setIsMobileMenuOpen(false)}>Projects</a></li>
-            <li><a href="#journey" onClick={() => setIsMobileMenuOpen(false)}>Journey</a></li>
-            <li><a href="#leadership" onClick={() => setIsMobileMenuOpen(false)}>Leadership</a></li>
-            <li><a href="#contact" onClick={() => setIsMobileMenuOpen(false)}>Contact me</a></li>
+            {NAV_ITEMS.map((item) => (
+              <li key={item.id}>
+                <a 
+                  href={`#${item.id}`} 
+                  className={activeSection === item.id ? 'mobile-active' : ''}
+                  onClick={() => {
+                    setActiveSection(item.id);
+                    setIsMobileMenuOpen(false);
+                  }}
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))}
           </ul>
-        )}
+        </div>
       </nav>
 
       <main className="main-wrapper">
